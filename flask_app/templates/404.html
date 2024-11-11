@@ -1,12 +1,28 @@
 {% extends "base.html" %}
+
+{% block metadata %}
+<title>Navi | 404</title>
+{% endblock %}
+
 {% block content %}
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="flex items-center justify-center w-screen h-screen bg-black text-white overflow-hidden relative">
+    <!-- Glitch Text -->
     <div class="text-center">
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
-        <p class="text-2xl text-gray-600 mb-6">Oops! The page you're looking for doesn't exist.</p>
-        <p class="text-gray-500 mb-6">It might have been removed, or the URL might be incorrect.</p>
-        <a href="/" class="text-lg font-medium text-blue-600 hover:text-blue-800 underline">
-            Return to Homepage
+        <div class="text-[96px] font-mono tracking-tight relative animate-glitch" title="404">
+            404
+            <!-- Top glitch layer -->
+            <div title="404" class="absolute top-0 left-0 w-full h-full animate-glitchTop bg-transparent text-white" style="clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);">
+                404
+            </div>
+            <!-- Bottom glitch layer -->
+            <div title="404" class="absolute top-0 left-0 w-full h-full animate-glitchBottom bg-transparent text-white" style="clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);">
+                404
+            </div>
+        </div>
+        <p class="text-lg text-gray-400 mt-6">Oops! The page you're looking for doesn't exist.</p>
+        <!-- Go Back Home Button -->
+        <a href="/" class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+            Go Back Home
         </a>
     </div>
 </div>
