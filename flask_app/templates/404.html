@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoIndexPage</title>
-</head>
-<body>
-    <h1>404</h1>
-    
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
+        <p class="text-2xl text-gray-600 mb-6">Oops! The page you're looking for doesn't exist.</p>
+        <p class="text-gray-500 mb-6">It might have been removed, or the URL might be incorrect.</p>
+        <a href="/" class="text-lg font-medium text-blue-600 hover:text-blue-800 underline">
+            Return to Homepage
+        </a>
+    </div>
+</div>
+{% endblock %}
