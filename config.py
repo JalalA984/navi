@@ -19,5 +19,6 @@ CSRF_ENABLED     = True
 # signing the data. 
 CSRF_SESSION_KEY = "secret"
 
-# TODO: Secret key for signing cookies
-SECRET_KEY = "secret"
+# Stores all configuration values
+SECRET_KEY = b'U\xf5<\xc8t?\xc9\xc5\x9a\xecS\xb92\nZY_\xe5+6\x8cx\xd2\r'
+MONGODB_HOST = '' 
