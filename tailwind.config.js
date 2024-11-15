@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class', // Enable class-based dark mode
   content: ["./flask_app/templates/**/*.{html,js,jsx,ts,tsx,vue,astro,svelte}"],
   theme: {
     extend: {
