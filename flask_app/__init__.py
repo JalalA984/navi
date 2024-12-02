@@ -12,19 +12,33 @@ from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
 
+from .client import NaviNewsClient
 
 
+from .extensions import db, login_manager, bcrypt
+movie_client = NaviNewsClient(os.getenv('NEWS_API_KEY'))
 
-# Define the WSGI application object
-app = Flask(__name__)
-# Configurations
-app.config.from_object("config")
+from .users.routes import users
 
-# Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
+def custom_404(e):
     return render_template("404.html"), 404
 
-@app.route('/', methods=['GET'])
-def index():
-    return render_template('index.html')
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+
+    app.config.from_pyfile("../config.py", silent=False)
+    if test_config is not None:
+        app.config.update(test_config)
+
+    db.init_app(app)
+    login_manager.init_app(app)
+    bcrypt.init_app(app)
+
+    app.register_blueprint(users)
+
+    app.register_error_handler(404, custom_404)
+
+    login_manager.login_view = "users.login"
+
+    return app
