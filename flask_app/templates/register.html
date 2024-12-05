@@ -1,11 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Register</h1>
-</body>
-</html>
+{% extends 'base.html' %} {% block header %}
+<nav class="hidden">
+  <!-- Empty nav to avoid rendering anything, but the toggle is still functional -->
+</nav>
+{% endblock %} {% block content %}
+
+<div class="">
+  <h1 class="">Register</h1>
+  <form action="" method="post" class="">
+    {{ form.csrf_token }}
+    <p>
+      {{ form.username.label }}<br />
+      {{ form.username(size=40, class="text-white fill-white") }}
+    </p>
+    <p>
+      {{ form.email.label }}<br />
+      {{ form.email(size=40, class="text-white fill-white") }}
+    </p>
+    <p>
+      {{ form.password.label }}<br />
+      {{ form.password(size=40, class="text-white fill-white") }}
+    </p>
+    <p>
+      {{ form.confirm_password.label }}<br />
+      {{ form.confirm_password(size=40, class="text-white fill-white") }}
+    </p>
+    
+    <button>{{ form.submit() }}</button>
+  </form>
+</div>
+
+{% endblock %}

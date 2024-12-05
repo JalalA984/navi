@@ -1,19 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_mongoengine import MongoEngine
-from flask_login import (
-    LoginManager,
-    current_user,
-    login_user,
-    logout_user,
-    login_required,
-)
-from flask_bcrypt import Bcrypt
-from werkzeug.utils import secure_filename
-from datetime import datetime
+from flask import Flask, render_template
 import os
-
+from navi.config import Config
 from .client import NaviNewsClient
-
 
 from .extensions import db, login_manager, bcrypt
 movie_client = NaviNewsClient(os.getenv('NEWS_API_KEY'))
@@ -26,11 +14,9 @@ def custom_404(e):
 
 def create_app(test_config=None):
     app = Flask(__name__)
-
-    app.config.from_pyfile("../config.py", silent=False)
-    if test_config is not None:
-        app.config.update(test_config)
-
+    
+    app.config.from_object(Config)
+    
     db.init_app(app)
     login_manager.init_app(app)
     bcrypt.init_app(app)

@@ -3,20 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navi</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}" />
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>NaviNews</title>
+    {% endif %}
+    <style>
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        main {
+            flex: 1;
+        }
+        
+    </style>
+    
 </head>
-<body>
-
-    <!-- Include header -->
-    {% include "header.html" %}
-
-    <!-- Main Content -->
-    {% block content %}
+<body class="bg-white dark:bg-gray-900  text-gray-800 dark:text-gray-200"">
+    
+    {% block header %}
     {% endblock %}
 
-    <!-- Include footer -->
+    <main class="container mx-auto">
+        {% block content %}
+        {% endblock %}
+    </main>
     {% include "footer.html" %}
 
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+        // Load theme preference from localStorage
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            lightIcon.classList.add('hidden');
+            darkIcon.classList.remove('hidden');
+        }
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
