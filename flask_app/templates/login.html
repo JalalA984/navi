@@ -5,7 +5,7 @@
 {% endblock %} {% block content %}
 
 <div class="">
-  <h1 class="">Register</h1>
+  <h1 class="">Login</h1>
   <form action="" method="post" class="">
     {{ form.csrf_token }}
     <p>
@@ -13,18 +13,9 @@
       {{ form.username(size=40, class="text-white fill-white") }}
     </p>
     <p>
-      {{ form.email.label }}<br />
-      {{ form.email(size=40, class="text-white fill-white") }}
-    </p>
-    <p>
       {{ form.password.label }}<br />
       {{ form.password(size=40, class="text-white fill-white") }}
     </p>
-    <p>
-      {{ form.confirm_password.label }}<br />
-      {{ form.confirm_password(size=40, class="text-white fill-white") }}
-    </p>
-
     <button>{{ form.submit() }}</button>
   </form>
 
@@ -35,8 +26,8 @@
     Go Back Home
   </a>
 
-  <a href="{{ url_for('users.login') }}" class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-    Go to login
+  <a href="{{ url_for('users.register') }}" class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+    Need to register?
 </a>
 </div>
 
