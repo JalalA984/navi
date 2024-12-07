@@ -10,10 +10,6 @@ from ..forms import RegistrationForm, LoginForm
 users = Blueprint("users", __name__)
 
 """ ************ User Management views ************ """
-@users.route("/")
-def index():
-    return render_template("index.html")
-
 
 @users.route("/register", methods=["GET", "POST"])
 def register():
@@ -27,7 +23,7 @@ def register():
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             user = User(username=form.username.data, email=form.email.data, password=hashed_password)
             user.save()
-            return redirect(url_for('users.index'))
+            return redirect(url_for('articles.index'))
         
     return render_template('register.html', form=form, title="NaviNews | Register")
 
@@ -55,7 +51,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('users.index'))
+    return redirect(url_for('articles.index'))
 
 
 @users.route("/account", methods=["GET", "POST"])

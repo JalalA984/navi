@@ -43,3 +43,11 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[InputRequired()])
     submit = SubmitField("Login")
 
+
+class SearchForm(FlaskForm):
+    search_query = StringField(
+    "Query", validators=[InputRequired(), Length(min=1, max=100)]
+    )
+    submit = SubmitField("Search")
+
+    

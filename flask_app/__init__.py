@@ -7,6 +7,7 @@ from .extensions import db, login_manager, bcrypt
 movie_client = NaviNewsClient(os.getenv('NEWS_API_KEY'))
 
 from .users.routes import users
+from .articles.routes import articles
 
 def custom_404(e):
     return render_template("404.html"), 404
@@ -22,6 +23,7 @@ def create_app(test_config=None):
     bcrypt.init_app(app)
 
     app.register_blueprint(users)
+    app.register_blueprint(articles)
 
     app.register_error_handler(404, custom_404)
 
