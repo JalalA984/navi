@@ -1,6 +1,6 @@
 FROM python:3.12-alpine
 
-WORKDIR /navi-docker
+WORKDIR /navi
 
 # Install required packages for Python and Node.js
 RUN apk add --no-cache nodejs npm

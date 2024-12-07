@@ -1,11 +1,19 @@
 # NaviNews – for navigating the world of news effortlessly
 
-Project Layout Reference: https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-applications
+Application lets users view current world news, search for topics of interests, and store desired searches and news articles.
 
-To reproduce python environment: pip3 install -r requirements.txt
 
-To run the test (development) server locally: flask run
+## Check deployed website!
+It may take 1-2 minutes for website to 'run' if the website has been unactive for a long time.\
+Also same for MongoDB database cluster. If website unactive, database unactive, cluster down :( 
 
-Honestly... you can't even run the app yourself locally unless you set up your own configs and .env variables
+[https://navinews.onrender.com/](https://navinews.onrender.com/)
 
-Just pull the docker image from ...
+## Run locally
+
+Download [Docker Desktop](https://www.docker.com/products/docker-desktop/)\
+Then run:
+
+```bash
+docker pull jalal984/navinews
+```
