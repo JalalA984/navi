@@ -25,13 +25,13 @@ def register():
             user.save()
             return redirect(url_for('articles.index'))
         
-    return render_template('register.html', form=form, title="NaviNews | Register")
+    return render_template('register.html', form=form, title="Register")
 
 
 @users.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return render_template('account.html')
+        return redirect(url_for('users.account'))
 
     form = LoginForm()
 
@@ -39,11 +39,11 @@ def login():
         user = User.objects(username=form.username.data).first()  
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
-            return render_template('account.html')
+            return redirect(url_for('users.account'))
         else:
             flash("Login unsuccessful. Authenticate again.", "danger")
 
-    return render_template('login.html', form=form, title="NaviNews | Login")
+    return render_template('login.html', form=form, title="Login")
 
 
 
@@ -60,6 +60,6 @@ def account():
     greeting = f"Hello, {current_user.username}!"
 
     return render_template(
-        'account.html', title="NaviNews | Settings",
+        'account.html', title="Settings",
         greeting=greeting
     )

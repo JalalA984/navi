@@ -1,21 +1,17 @@
-{% extends 'base.html' %} {% block header %}
-<nav class="hidden">
-  <!-- Empty nav to avoid rendering anything, but the toggle is still functional -->
-</nav>
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="">
-  <h1 class="">Account/Settings</h1>
-  <h2>{{greeting}}</h2>
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-4">Account/Settings</h1>
+    <h2 class="text-xl font-semibold mb-6 text-gray-700 dark:text-gray-300">{{ greeting }}</h2>
 
-  <a
-    href="{{ url_for('articles.index') }}"
-    class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-  >
-    Go Back Home
-  </a>
-
-
+    <a
+      href="{{ url_for('articles.index') }}"
+      class="mt-4 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+    >
+      Go Back Home
+    </a>
+  </div>
 </div>
-
 {% endblock %}

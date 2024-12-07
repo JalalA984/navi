@@ -47,7 +47,7 @@ def query_results(query):
     save_form = SaveArticleForm()
     prefer_category_form = PreferCategoryForm()  # Create an instance of PreferCategoryForm
 
-    return render_template("query.html", results=results, search_form=SearchForm(), save_form=save_form, prefer_category_form=prefer_category_form, query=query)
+    return render_template("query.html", results=results, search_form=SearchForm(), save_form=save_form, prefer_category_form=prefer_category_form, query=query, title="Search Results")
 
 
 
@@ -142,7 +142,7 @@ def favorite_category():
 def favorite_categories():
     try:
         preferred_categories = current_user.preferred_categories  # Retrieve categories from the current user
-        return render_template("favorite_categories.html", categories=preferred_categories)
+        return render_template("favorite_categories.html", categories=preferred_categories, title="Favorite Searches")
     except Exception as e:
         print(f"Error: {str(e)}")
         flash(f"Error retrieving favorite categories: {str(e)}")
