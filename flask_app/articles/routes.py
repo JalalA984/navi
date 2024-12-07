@@ -15,14 +15,6 @@ from flask_app.forms import SearchForm
 
 
 """ ************ View functions ************ """
-'''
-  <form class="" action="/" method="POST">
-    {{ form.csrf_token }}
-    {{ form.search_query(class="", placeholder="Search for a topic...") }}
-    
-    {{ form.submit(class="") }}
-  </form>
-'''
 
 @articles.route("/", methods=["GET", "POST"])
 def index():
@@ -47,6 +39,6 @@ def query_results(query):
         results, total_results = news_client.search_articles(query)
     except ValueError as e:
         results = []
-        return render_template("query.html", error_msg=str(e))
+        return render_template("query.html", error_msg=str(e), form=SearchForm(), query=query)
 
-    return render_template("query.html", results=results)
+    return render_template("query.html", results=results, form=SearchForm(), query=query)

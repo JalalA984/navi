@@ -1,4 +1,62 @@
 {% extends "header.html" %}
 {% block content %}
-query results!
+<style>
+    img {
+        max-width: 300px;
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    .article-container {
+        margin-bottom: 2rem; /* Add vertical gap */
+    }
+</style>
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Search Results for "{{ query }}"</h1>
+
+    {% if results %}
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-6">
+            {% for article in results %}
+                {% if '[Removed]' not in article.title %}
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl article-container">
+                        <div class="flex flex-col items-center p-6 text-center">
+                            <img
+                                src="{{ article.urlToImage if article.urlToImage else 'https://via.placeholder.com/300x200' }}"
+                                alt="{{ article.title }}"
+                                class="w-full h-48 object-cover rounded-t-lg mb-4"
+                            >
+                            <div class="w-full px-4">
+                                <h2 class="text-base font-semibold text-gray-800 dark:text-white mb-2">
+                                    <a href="{{ article.url }}" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                        {{ article.title }}
+                                    </a>
+                                </h2>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-3">
+                                    {{ article.description if article.description else "No description available." }}
+                                </p>
+                                <p class="text-xs text-gray-400 dark:text-gray-500 mb-1">
+                                    Source: {{ article.source }}
+                                </p>
+                                <p class="text-xs text-gray-400 dark:text-gray-500">
+                                    Published: {{ article.published_at.strftime('%B %d, %Y %H:%M %p') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="bg-gray-200 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                        <div class="flex flex-col items-center p-6 text-center">
+                            <p class="text-gray-800 dark:text-white font-semibold">This article has been removed.</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500 dark:text-gray-400 mt-6">
+            No results found for "{{ query }}". Please try a different search.
+        </p>
+    {% endif %}
+</div>
 {% endblock %}
