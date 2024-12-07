@@ -1,4 +1,5 @@
 {% extends "header.html" %}
+
 {% block content %}
 <style>
     img {
@@ -14,10 +15,13 @@
 
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold text-center mb-8">Search Results for "{{ query }}"</h1>
-    <form method="post" action="{{ url_for('articles.favorite_category') }}">
+    
+    <form method="post" action="{{ url_for('articles.favorite_category') }}" class="flex justify-center mb-6">
         {{ prefer_category_form.hidden_tag() }}
         <input type="hidden" name="category" value="{{ query }}">
-        <button type="submit" class="btn btn-primary">Favorite</button>
+        <button type="submit" class="btn btn-save px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Favorite this search
+        </button>
     </form>
 
     {% if results %}
@@ -54,9 +58,8 @@
                                 <input type="hidden" name="url" value="{{ article.url }}">
                                 <input type="hidden" name="source" value="{{ article.source }}">
                   
-                                {{ save_form.submit(class="btn btn-primary") }}
+                                {{ save_form.submit(class="btn btn-save px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400") }}
                             </form>
-                            
                         </div>
                     </div>
                 {% else %}

@@ -8,3 +8,55 @@ html {
   color-scheme: light dark;
   font-family: 'Inter', sans-serif;
 }
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/static/fonts/Azonix.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.custom-font {
+  font-family: 'CustomFont', sans-serif; /* Fallback to sans-serif if the custom font isn't available */
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, rgba(255,255,105,1) 0%, rgba(253,164,206,1) 56%, rgba(176,243,252,1) 100%);
+  -webkit-background-clip: text; /* Ensures the gradient is clipped to the text */
+  -webkit-text-fill-color: transparent; /* Makes the text fill transparent to show the gradient */
+  background-clip: text; /* For non-Webkit browsers */
+  
+}
+
+
+/* Base button styles */
+.btn-save {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* Hover and active states */
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+.btn-save:active {
+    transform: scale(0.98);
+}
+
+/* Disabled state */
+.btn-save:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+

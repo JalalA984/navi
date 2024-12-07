@@ -1,43 +1,51 @@
-{% extends 'base.html' %} {% block header %}
+{% extends 'base.html' %}
+
+{% block header %}
 <nav class="hidden">
   <!-- Empty nav to avoid rendering anything, but the toggle is still functional -->
 </nav>
-{% endblock %} {% block content %}
+{% endblock %}
 
-<div class="">
-  <h1 class="">Register</h1>
-  <form action="" method="post" class="">
-    {{ form.csrf_token }}
-    <p>
-      {{ form.username.label }}<br />
-      {{ form.username(size=40, class="text-white fill-white") }}
-    </p>
-    <p>
-      {{ form.email.label }}<br />
-      {{ form.email(size=40, class="text-white fill-white") }}
-    </p>
-    <p>
-      {{ form.password.label }}<br />
-      {{ form.password(size=40, class="text-white fill-white") }}
-    </p>
-    <p>
-      {{ form.confirm_password.label }}<br />
-      {{ form.confirm_password(size=40, class="text-white fill-white") }}
-    </p>
-
-    <button>{{ form.submit() }}</button>
-  </form>
-
-  <a
-    href="{{ url_for('articles.index') }}"
-    class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-  >
-    Go Back Home
-  </a>
-
-  <a href="{{ url_for('users.login') }}" class="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-    Go to login
-</a>
+{% block content %}
+<div class="flex justify-center items-center min-h-screen">
+  <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-8 max-w-md w-full">
+    <h1 class="text-2xl font-bold mb-6 text-center">Register</h1>
+    <form action="" method="post" class="space-y-4">
+      {{ form.csrf_token }}
+      <div>
+        <label for="username" class="block text-sm font-medium">{{ form.username.label }}</label>
+        {{ form.username(size=40, class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none text-white") }}
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium">{{ form.email.label }}</label>
+        {{ form.email(size=40, class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none text-white") }}
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium">{{ form.password.label }}</label>
+        {{ form.password(size=40, class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none text-white") }}
+      </div>
+      <div>
+        <label for="confirm_password" class="block text-sm font-medium">{{ form.confirm_password.label }}</label>
+        {{ form.confirm_password(size=40, class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none text-white") }}
+      </div>
+      <button class="w-full bg-blue-600 text-white rounded-md font-semibold py-2 px-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        {{ form.submit() }}
+      </button>
+    </form>
+    <div class="mt-6 space-y-4">
+      <a
+        href="{{ url_for('articles.index') }}"
+        class="block text-center px-6 py-3 text-sm font-semibold border rounded-md hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 dark:hover:bg-gray-700 dark:hover:border-gray-500 dark:hover:text-gray-200"
+      >
+        Go Back Home
+      </a>
+      <a
+        href="{{ url_for('users.login') }}"
+        class="block text-center px-6 py-3 text-sm font-semibold border rounded-md hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:hover:bg-gray-700 dark:hover:border-gray-500 dark:hover:text-gray-200"
+      >
+        Go to Login
+      </a>
+    </div>
+  </div>
 </div>
-
 {% endblock %}
