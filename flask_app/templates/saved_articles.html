@@ -1,0 +1,16 @@
+
+<h2>Saved Articles</h2>
+{% if saved_articles %}
+    <ul>
+        {% for article in saved_articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p><strong>Source:</strong> {{ article.source }}</p>
+                <p>{{ article.description }}</p>
+                <a href="{{ article.url }}" target="_blank">Read more</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no saved articles.</p>
+{% endif %}

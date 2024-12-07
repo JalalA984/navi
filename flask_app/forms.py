@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from wtforms import StringField, SubmitField, PasswordField, HiddenField
 from wtforms.validators import (
     InputRequired,
     Length,
@@ -50,4 +50,16 @@ class SearchForm(FlaskForm):
     )
     submit = SubmitField("Search")
 
+
+class SaveArticleForm(FlaskForm):
+    title = StringField('Title', validators=[InputRequired()])
+    description = StringField('Description')
+    url = StringField('URL', validators=[InputRequired()])
+    source = StringField('Source')
+
+    submit = SubmitField('SAVE')
     
+    
+class PreferCategoryForm(FlaskForm):
+    category = StringField("Category", validators=[InputRequired()])
+    submit = SubmitField('FAVORITE')

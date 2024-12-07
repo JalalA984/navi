@@ -18,6 +18,18 @@ class Article(object):
     def __repr__(self):
         return self.title
 
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "description": self.description,
+            "url": self.url,
+            "source": self.source,
+            "published_at": self.published_at.isoformat(),
+            "content": self.content,
+            "urlToImage": self.urlToImage
+        }
+
+
 class NaviNewsClient(object):
     def __init__(self, api_key):
         self.sess = requests.Session()

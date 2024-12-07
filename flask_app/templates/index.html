@@ -41,6 +41,16 @@
                             Published: {{ article.published_at.strftime('%B %d, %Y %H:%M %p') }}
                         </p>
                     </div>
+                    <form method="post" action="{{ url_for('articles.save_article') }}">
+                        {{ save_form.hidden_tag() }}
+                        <input type="hidden" name="title" value="{{ article.title }}">
+                        <input type="hidden" name="description" value="{{ article.description }}">
+                        <input type="hidden" name="url" value="{{ article.url }}">
+                        <input type="hidden" name="source" value="{{ article.source }}">
+                        <input type="hidden" name="published_at" value="{{ article.published_at.isoformat() }}">
+                        {{ save_form.submit(class="btn btn-primary") }}
+                    </form>
+                    
                 </div>
             </div>
             {% endif %}
