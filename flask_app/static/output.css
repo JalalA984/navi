@@ -618,6 +618,10 @@ video {
   top: 50%;
 }
 
+.m-4{
+  margin: 1rem;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;

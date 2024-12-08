@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}" />
     {% if title %}
-        <title>NaviNews | {{ title }}</title>
+    <title>NaviNews | {{ title }}</title>
     {% else %}
-        <title>NaviNews</title>
+    <title>NaviNews</title>
     {% endif %}
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             display: flex;
             flex-direction: column;
             margin: 0;
         }
+
         main {
             flex: 1;
         }
-        
     </style>
-    
+
 </head>
+
 <body class="bg-white dark:bg-gray-900  text-gray-800 dark:text-gray-200"">
     
     {% block header %}
     {% endblock %}
 
-    <main class="container mx-auto">
-        {% block content %}
-        {% endblock %}
+    <main class=" container mx-auto">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="text-center m-4  text-red-600 dark:text-red-500">
+        {% for message in messages %}
+        <div class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}
+    {% endblock %}
     </main>
     {% include "footer.html" %}
 
@@ -69,4 +81,5 @@
         }
     </script>
 </body>
+
 </html>
