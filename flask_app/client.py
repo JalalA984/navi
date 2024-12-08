@@ -58,6 +58,10 @@ class NaviNewsClient(object):
 
         resp = self.sess.get(search_url, params=params, headers=self.headers)
 
+        if resp.status_code == 429:
+            print("Rate limited by the API. Please try again later.")
+            return [], 0
+
         if resp.status_code != 200:
             raise ValueError(f"Search request failed with status code {resp.status_code}. Response: {resp.text}")
 
@@ -88,6 +92,10 @@ class NaviNewsClient(object):
 
         resp = self.sess.get(headlines_url, params=params, headers=self.headers)
 
+        if resp.status_code == 429:
+            print("Rate limited by the API. Please try again later.")
+            return [], 0
+
         if resp.status_code != 200:
             raise ValueError(f"Request for top headlines failed with status code {resp.status_code}. Response: {resp.text}")
 
@@ -101,8 +109,6 @@ class NaviNewsClient(object):
 
 # Example usage
 if __name__ == "__main__":
-    import os
-
     api_key = os.environ.get("NEWS_API_KEY")
     if not api_key:
         raise ValueError("NEWS_API_KEY environment variable is not set")

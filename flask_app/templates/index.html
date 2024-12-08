@@ -58,8 +58,8 @@
     </div>
 
     {% if not top_headlines or top_headlines|selectattr('title', 'ne', '[Removed]')|list|length == 0 %}
-        <p class="text-center text-gray-500 dark:text-gray-400 mt-6">
-            No top headlines available at the moment. Please try again later.
+        <p class="text-center text-red-600 dark:text-red-500 mt-6">
+            No articles available at the moment. API has limited requests. Please try again in 24hrs.
         </p>
     {% endif %}
 </div>
