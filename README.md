@@ -75,7 +75,7 @@ The application uses MongoDB to store and retrieve the following data:
 
 ## Third-Party Integrations
 
-The application uses the NewsAPI to fetch news articles. This API provides the core functionality of exploring news topics.
+The application uses the [NewsAPI](https://newsapi.org/) to fetch news articles. This API provides the core functionality of exploring news topics.
 
 ### API Limitations:
 
